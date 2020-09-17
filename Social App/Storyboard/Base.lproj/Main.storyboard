@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="IgQ-Ds-wuL" kind="show" id="0IL-dA-WE7"/>
+                                    <segue destination="IgQ-Ds-wuL" kind="show" id="hSq-zd-dVI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -140,11 +140,11 @@
             </objects>
             <point key="canvasLocation" x="2556.521739130435" y="-905.35714285714278"/>
         </scene>
-        <!--Мои друзья-->
+        <!--Navigation Controller-->
         <scene sceneID="U2N-0f-40h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gf5-JI-x1r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Мои друзья" id="Apn-g4-v7h"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="Apn-g4-v7h"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ey8-19-MLe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -333,11 +333,11 @@
             </objects>
             <point key="canvasLocation" x="2557" y="-220"/>
         </scene>
-        <!--Мои группы-->
+        <!--Navigation Controller-->
         <scene sceneID="wES-aL-J8L">
             <objects>
                 <navigationController id="Hw5-9X-mRd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Мои группы" id="P4o-kV-y3y"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="P4o-kV-y3y"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="op4-je-CfJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>

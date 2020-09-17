@@ -8,20 +8,38 @@
 
 import UIKit
 
-class MyFriendsCell: UITableViewCell {
+// MARK: - MyFriendCell
 
+final class MyFriendsCell: UITableViewCell {
+
+    // MARK: - Outlets
+    
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var friendImage: UIImageView!
     
+    // MARK: - Life Cycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupViews()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+}
 
+// MARK: - Setups
+
+private extension MyFriendsCell {
+    
+    func setupViews() {
+        setFriendImage()
+    }
+    
+    func setFriendImage() {
+        friendImage.layer.cornerRadius = 20
+        friendImage.layer.shadowOffset = CGSize(width: 5, height: 5)
+        friendImage.layer.shadowOpacity = 1
+    }
 }

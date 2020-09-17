@@ -53,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D25B4962513DEEE00764F6C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1DF28A6F25124A8E00CFB258 /* Main.storyboard */,
+				1DF28A7425124A9000CFB258 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		1D53E38A2513D25000675277 /* MyGroups */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,15 +99,14 @@
 		1DF28A6825124A8E00CFB258 /* Social App */ = {
 			isa = PBXGroup;
 			children = (
+				1DF28A6925124A8E00CFB258 /* AppDelegate.swift */,
+				1D25B4962513DEEE00764F6C /* Storyboard */,
 				1D53E38F2513D57F00675277 /* NewGroups */,
 				1D53E38A2513D25000675277 /* MyGroups */,
 				1DF28A8C25126F0200CFB258 /* FriendPhotos */,
 				1DF28A872512630800CFB258 /* MyFriends */,
-				1DF28A6925124A8E00CFB258 /* AppDelegate.swift */,
 				1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */,
-				1DF28A6F25124A8E00CFB258 /* Main.storyboard */,
 				1DF28A7225124A9000CFB258 /* Assets.xcassets */,
-				1DF28A7425124A9000CFB258 /* LaunchScreen.storyboard */,
 				1DF28A7725124A9000CFB258 /* Info.plist */,
 				1D53E3942513D6B400675277 /* Default-568h@2x.png */,
 			);
