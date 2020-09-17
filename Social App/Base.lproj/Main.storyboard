@@ -60,7 +60,7 @@
         <!--Friend Photo Controller-->
         <scene sceneID="3yi-Ls-2aF">
             <objects>
-                <collectionViewController id="J18-qL-2UX" customClass="FriendPhotoController" customModule="Storyboard_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="J18-qL-2UX" customClass="FriendPhotoController" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JI3-0S-s6D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +73,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendPhoto" id="Tc8-st-jau" customClass="FriendPhotoCell" customModule="Storyboard_Practice" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendPhoto" id="Tc8-st-jau" customClass="FriendPhotoCell" customModule="Social_App" customModuleProvider="target">
                                 <rect key="frame" x="82" y="0.0" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dG-G6-R5G">
@@ -116,10 +116,9 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <constraints>
-                                    <constraint firstItem="5dG-G6-R5G" firstAttribute="top" secondItem="Tc8-st-jau" secondAttribute="topMargin" constant="-8" id="cz7-jM-zSg"/>
-                                    <constraint firstItem="5dG-G6-R5G" firstAttribute="leading" secondItem="Tc8-st-jau" secondAttribute="leadingMargin" constant="-8" id="d4V-Fx-mKE"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="5dG-G6-R5G" secondAttribute="trailing" constant="-8" id="fBY-Au-fC5"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="5dG-G6-R5G" secondAttribute="bottom" constant="-8" id="laj-FX-UhL"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="5dG-G6-R5G" secondAttribute="bottom" constant="-8" id="7yB-L4-GYX"/>
+                                    <constraint firstItem="5dG-G6-R5G" firstAttribute="top" secondItem="Tc8-st-jau" secondAttribute="topMargin" constant="-8" id="LGM-DM-noG"/>
+                                    <constraint firstItem="5dG-G6-R5G" firstAttribute="leading" secondItem="Tc8-st-jau" secondAttribute="leadingMargin" constant="-8" id="axU-9h-Kr9"/>
                                 </constraints>
                                 <size key="customSize" width="250" height="250"/>
                                 <connections>
@@ -163,13 +162,13 @@
         <!--Мои друзья-->
         <scene sceneID="Cxf-L6-JaQ">
             <objects>
-                <tableViewController id="fu5-xm-NBK" customClass="MyFriendsController" customModule="Storyboard_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="fu5-xm-NBK" customClass="MyFriendsController" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kve-4h-0XA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFriendsCell" id="Iv8-wA-JRm" customClass="MyFriendsCell" customModule="Storyboard_Practice" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFriendsCell" id="Iv8-wA-JRm" customClass="MyFriendsCell" customModule="Social_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iv8-wA-JRm" id="hrM-aA-ilg">
@@ -219,13 +218,13 @@
         <!--Мои группы-->
         <scene sceneID="WZr-m6-EtC">
             <objects>
-                <tableViewController id="iRt-GL-wx3" customClass="MyGroupsController" customModule="Storyboard_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="iRt-GL-wx3" customClass="MyGroupsController" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CrU-t4-4cj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myGroupsCell" id="PFx-Dl-gaJ" customClass="MyGroupsCell" customModule="Storyboard_Practice" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myGroupsCell" id="PFx-Dl-gaJ" customClass="MyGroupsCell" customModule="Social_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PFx-Dl-gaJ" id="9v9-L0-Wph">
@@ -254,6 +253,10 @@
                                         <constraint firstItem="1dL-Tk-iKB" firstAttribute="top" secondItem="9v9-L0-Wph" secondAttribute="top" id="s9v-4Q-Eza"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="myGroupImage" destination="1dL-Tk-iKB" id="JM8-9O-vyl"/>
+                                    <outlet property="myGroupName" destination="t2F-ji-0GI" id="eai-I3-EL8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -264,7 +267,7 @@
                     <navigationItem key="navigationItem" title="Мои группы" id="XFY-h4-a1d">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eLN-PZ-mgp">
                             <connections>
-                                <segue destination="cdt-sB-BAP" kind="show" id="gye-36-YDc"/>
+                                <segue destination="cdt-sB-BAP" kind="show" id="982-Gf-Dj1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -276,13 +279,13 @@
         <!--Новые группы-->
         <scene sceneID="Yjm-qw-sJy">
             <objects>
-                <tableViewController id="cdt-sB-BAP" customClass="NewGroupsController" customModule="Storyboard_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cdt-sB-BAP" customClass="NewGroupsController" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9ax-Sk-bUR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newGroupsCell" id="nZY-sC-HTZ" customClass="NewGroupsCell" customModule="Storyboard_Practice" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newGroupsCell" id="nZY-sC-HTZ" customClass="NewGroupsCell" customModule="Social_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nZY-sC-HTZ" id="5GJ-hF-1vO">
@@ -311,6 +314,11 @@
                                         <constraint firstAttribute="trailing" secondItem="8Ne-gR-JiC" secondAttribute="trailing" constant="5" id="qHD-vi-Qcf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="groupImage" destination="8Ne-gR-JiC" id="D5F-uf-3cx"/>
+                                    <outlet property="groupName" destination="5uA-Sp-2TB" id="akf-4J-VNm"/>
+                                    <segue destination="Vb1-ij-ycn" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="znf-xl-b1t"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -321,6 +329,7 @@
                     <navigationItem key="navigationItem" title="Новые группы" id="jOJ-uf-7BX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mc3-lm-59o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Vb1-ij-ycn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2557" y="-220"/>
         </scene>
