@@ -13,6 +13,7 @@
 		1D53E3932513D5BB00675277 /* NewGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D53E3922513D5BB00675277 /* NewGroupsController.swift */; };
 		1D53E3952513D6B400675277 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D53E3942513D6B400675277 /* Default-568h@2x.png */; };
 		1D5C89D62516CD7000D82B40 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C89D52516CD7000D82B40 /* LoginController.swift */; };
+		1D8972AA2517F57400F22855 /* ImageViewExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8972A92517F57400F22855 /* ImageViewExtenstion.swift */; };
 		1DF28A6A25124A8E00CFB258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A6925124A8E00CFB258 /* AppDelegate.swift */; };
 		1DF28A6C25124A8E00CFB258 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */; };
 		1DF28A7125124A8E00CFB258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF28A6F25124A8E00CFB258 /* Main.storyboard */; };
@@ -23,7 +24,7 @@
 		1DF28A8E25126F1D00CFB258 /* FriendPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A8D25126F1D00CFB258 /* FriendPhotoController.swift */; };
 		1DF28A9025126F2D00CFB258 /* FriendPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A8F25126F2D00CFB258 /* FriendPhotoCell.swift */; };
 		1DF3E92925177B5900BC1C96 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E92825177B5900BC1C96 /* FriendModel.swift */; };
-		1DF3E93325177C1B00BC1C96 /* NewtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E93225177C1B00BC1C96 /* NewtworkLayer.swift */; };
+		1DF3E93325177C1B00BC1C96 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E93225177C1B00BC1C96 /* NetworkLayer.swift */; };
 		1DF3E93625177C4C00BC1C96 /* INetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E93525177C4C00BC1C96 /* INetworkLayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		1D53E3922513D5BB00675277 /* NewGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupsController.swift; sourceTree = "<group>"; };
 		1D53E3942513D6B400675277 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1D5C89D52516CD7000D82B40 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1D8972A92517F57400F22855 /* ImageViewExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtenstion.swift; sourceTree = "<group>"; };
 		1DF28A6625124A8E00CFB258 /* Social App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF28A6925124A8E00CFB258 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		1DF28A8D25126F1D00CFB258 /* FriendPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoController.swift; sourceTree = "<group>"; };
 		1DF28A8F25126F2D00CFB258 /* FriendPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCell.swift; sourceTree = "<group>"; };
 		1DF3E92825177B5900BC1C96 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
-		1DF3E93225177C1B00BC1C96 /* NewtworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewtworkLayer.swift; sourceTree = "<group>"; };
+		1DF3E93225177C1B00BC1C96 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		1DF3E93525177C4C00BC1C96 /* INetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INetworkLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,34 @@
 			path = NewGroups;
 			sourceTree = "<group>";
 		};
+		1D8972A42517F4AF00F22855 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1DF3E93225177C1B00BC1C96 /* NetworkLayer.swift */,
+				1DF3E93525177C4C00BC1C96 /* INetworkLayer.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1D8972A52517F4F800F22855 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				1D8972A82517F55C00F22855 /* Extensions */,
+				1DF28A7225124A9000CFB258 /* Assets.xcassets */,
+				1DF28A7725124A9000CFB258 /* Info.plist */,
+				1D53E3942513D6B400675277 /* Default-568h@2x.png */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		1D8972A82517F55C00F22855 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1D8972A92517F57400F22855 /* ImageViewExtenstion.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1DF28A5D25124A8E00CFB258 = {
 			isa = PBXGroup;
 			children = (
@@ -109,18 +139,14 @@
 			children = (
 				1DF28A6925124A8E00CFB258 /* AppDelegate.swift */,
 				1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */,
-				1D25B4962513DEEE00764F6C /* Storyboard */,
-				1D53E38F2513D57F00675277 /* NewGroups */,
-				1D53E38A2513D25000675277 /* MyGroups */,
-				1DF28A8C25126F0200CFB258 /* FriendPhotos */,
 				1DF28A872512630800CFB258 /* MyFriends */,
-				1DF28A7225124A9000CFB258 /* Assets.xcassets */,
-				1DF28A7725124A9000CFB258 /* Info.plist */,
-				1D53E3942513D6B400675277 /* Default-568h@2x.png */,
+				1DF28A8C25126F0200CFB258 /* FriendPhotos */,
+				1D53E38A2513D25000675277 /* MyGroups */,
+				1D53E38F2513D57F00675277 /* NewGroups */,
+				1D8972A42517F4AF00F22855 /* Network */,
+				1D25B4962513DEEE00764F6C /* Storyboard */,
+				1D8972A52517F4F800F22855 /* Supports */,
 				1D5C89D52516CD7000D82B40 /* LoginController.swift */,
-				1DF3E92825177B5900BC1C96 /* FriendModel.swift */,
-				1DF3E93225177C1B00BC1C96 /* NewtworkLayer.swift */,
-				1DF3E93525177C4C00BC1C96 /* INetworkLayer.swift */,
 			);
 			path = "Social App";
 			sourceTree = "<group>";
@@ -130,6 +156,7 @@
 			children = (
 				1DF28A882512632900CFB258 /* MyFriendsController.swift */,
 				1DF28A8A2512643200CFB258 /* MyFriendsCell.swift */,
+				1DF3E92825177B5900BC1C96 /* FriendModel.swift */,
 			);
 			path = MyFriends;
 			sourceTree = "<group>";
@@ -217,12 +244,13 @@
 			files = (
 				1D5C89D62516CD7000D82B40 /* LoginController.swift in Sources */,
 				1DF3E92925177B5900BC1C96 /* FriendModel.swift in Sources */,
-				1DF3E93325177C1B00BC1C96 /* NewtworkLayer.swift in Sources */,
+				1DF3E93325177C1B00BC1C96 /* NetworkLayer.swift in Sources */,
 				1DF28A9025126F2D00CFB258 /* FriendPhotoCell.swift in Sources */,
 				1D53E3912513D5A900675277 /* NewGroupsCell.swift in Sources */,
 				1D53E3932513D5BB00675277 /* NewGroupsController.swift in Sources */,
 				1DF3E93625177C4C00BC1C96 /* INetworkLayer.swift in Sources */,
 				1DF28A892512632900CFB258 /* MyFriendsController.swift in Sources */,
+				1D8972AA2517F57400F22855 /* ImageViewExtenstion.swift in Sources */,
 				1DF28A6A25124A8E00CFB258 /* AppDelegate.swift in Sources */,
 				1D53E38E2513D27900675277 /* MyGroupsCell.swift in Sources */,
 				1DF28A6C25124A8E00CFB258 /* SceneDelegate.swift in Sources */,
@@ -375,7 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Social App/Info.plist";
+				INFOPLIST_FILE = "Social App/Supports/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,7 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Social App/Info.plist";
+				INFOPLIST_FILE = "Social App/Supports/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

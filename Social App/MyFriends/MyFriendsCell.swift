@@ -16,9 +16,11 @@ final class MyFriendsCell: UITableViewCell {
         didSet {
             guard
                 let firstname = cellData?.first_name,
-                let lastname = cellData?.last_name
+                let lastname = cellData?.last_name,
+                let image = URL(string: "\(cellData?.photo_200_orig ?? "")")
             else { return }
             friendName.text = "\(firstname) \(lastname)"
+            friendImage.parseImage(url: image)
         }
     }
     // MARK: - Outlets

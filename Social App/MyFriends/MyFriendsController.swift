@@ -30,7 +30,7 @@ final class MyFriendsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        loadData(whichApi: "https://api.vk.com/method/friends.get?user_ids=leshaaleshaaa&fields=bdate&access_token=f0d4dc90c3ed349153d83e9a52b11cb019bd73cd42b7ff3a1a4a287b4471784bda5ddf4ca321f9955a526&v=5.124")
+        loadData(whichApi: "https://api.vk.com/method/friends.get?user_ids=leshaaleshaaa&fields=photo_200_orig&access_token=f0d4dc90c3ed349153d83e9a52b11cb019bd73cd42b7ff3a1a4a287b4471784bda5ddf4ca321f9955a526&v=5.124")
     }
     
     // MARK: - Selectors
@@ -62,27 +62,7 @@ final class MyFriendsController: UITableViewController {
 private extension MyFriendsController {
     
     func setupViews() {
-//        setFriendsList()
         setSearchBar()
-    }
-    
-    func setFriendsList() {
-        friendList = [("Кирилл Мальцев", UIImage(named: "pizza1")!),
-                      ("Артем Есичев", UIImage(named: "pizza2")!),
-                      ("Фрол Гугнин", UIImage(named: "pizza3")!),
-                      ("Анастасия Соколова", UIImage(named: "pizza4")!)]
-        
-        for friend in friendList {
-            let friendKey = String(friend.0.prefix(1))
-            if var friendValues = friendsDictionary[friendKey] {
-                friendValues.append((friend.0, friend.1))
-                friendsDictionary[friendKey] = friendValues
-            } else {
-                friendsDictionary[friendKey] = [(friend.0, friend.1)]
-            }
-        }
-        friendSectionTitle = [String](friendsDictionary.keys)
-        friendSectionTitle = friendSectionTitle.sorted(by: { $0 < $1 })
     }
     
     func setSearchBar() {
@@ -102,54 +82,19 @@ extension MyFriendsController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-//        return friendSectionTitle.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.response?.items?.count ?? 0
-//
-//        let friendKey = friendSectionTitle[section]
-//        if searchingStatus {
-//            if let searchValues = friendsSearch[friendKey] {
-//                return searchValues.count
-//            }
-//        } else {
-//            if let friendValues = friendsDictionary[friendKey] {
-//                return friendValues.count
-//            }
-//        }
-//        return 0
+
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as? MyFriendsCell else { return UITableViewCell() }
         cell.cellData = results.response?.items?[indexPath.row]
-//        let friendKey = friendSectionTitle[indexPath.section]
-//        if searchingStatus {
-//            if let searchValues = friendsSearch[friendKey] {
-//                cell.friendName.text = searchValues[indexPath.row].0
-//                cell.friendImage.image = searchValues[indexPath.row].1
-//            }
-//        } else {
-//            if let friendValues = friendsDictionary[friendKey] {
-//                cell.friendName.text = friendValues[indexPath.row].0
-//                cell.friendImage.image = friendValues[indexPath.row].1
-//            }
-//        }
+        
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return friendSectionTitle[section]
-//    }
-//    
-//    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-//        if searchingStatus {
-//            return friendSearchTitle
-//        } else {
-//            return friendSectionTitle
-//        }
-//    }
 }
 
 // MARK: - SearchBar Delegate

@@ -19,4 +19,5 @@ struct Info: Decodable {
 struct Items: Decodable {
     var first_name: String?
     var last_name: String?
+    var photo_200_orig: String?
 }
