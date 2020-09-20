@@ -11,7 +11,16 @@ import UIKit
 // MARK: - MyFriendCell
 
 final class MyFriendsCell: UITableViewCell {
-
+    
+    public var cellData: Items? {
+        didSet {
+            guard
+                let firstname = cellData?.first_name,
+                let lastname = cellData?.last_name
+            else { return }
+            friendName.text = "\(firstname) \(lastname)"
+        }
+    }
     // MARK: - Outlets
     
     @IBOutlet weak var friendName: UILabel!
