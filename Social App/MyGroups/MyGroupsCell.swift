@@ -8,17 +8,26 @@
 
 import UIKit
 
-class MyGroupsCell: UITableViewCell {
+// MARK: - MyGroupsCell
 
+final class MyGroupsCell: UITableViewCell {
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var myGroupName: UILabel!
+    @IBOutlet weak var myGroupImage: UIImageView!
+    
+    // MARK: - Life Cycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

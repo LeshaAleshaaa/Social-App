@@ -12,6 +12,7 @@
 		1D53E3912513D5A900675277 /* NewGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D53E3902513D5A900675277 /* NewGroupsCell.swift */; };
 		1D53E3932513D5BB00675277 /* NewGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D53E3922513D5BB00675277 /* NewGroupsController.swift */; };
 		1D53E3952513D6B400675277 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D53E3942513D6B400675277 /* Default-568h@2x.png */; };
+		1D5C89D62516CD7000D82B40 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5C89D52516CD7000D82B40 /* LoginController.swift */; };
 		1DF28A6A25124A8E00CFB258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A6925124A8E00CFB258 /* AppDelegate.swift */; };
 		1DF28A6C25124A8E00CFB258 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */; };
 		1DF28A7125124A8E00CFB258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF28A6F25124A8E00CFB258 /* Main.storyboard */; };
@@ -21,6 +22,9 @@
 		1DF28A8B2512643200CFB258 /* MyFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A8A2512643200CFB258 /* MyFriendsCell.swift */; };
 		1DF28A8E25126F1D00CFB258 /* FriendPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A8D25126F1D00CFB258 /* FriendPhotoController.swift */; };
 		1DF28A9025126F2D00CFB258 /* FriendPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF28A8F25126F2D00CFB258 /* FriendPhotoCell.swift */; };
+		1DF3E92925177B5900BC1C96 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E92825177B5900BC1C96 /* FriendModel.swift */; };
+		1DF3E93325177C1B00BC1C96 /* NewtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E93225177C1B00BC1C96 /* NewtworkLayer.swift */; };
+		1DF3E93625177C4C00BC1C96 /* INetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E93525177C4C00BC1C96 /* INetworkLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,7 @@
 		1D53E3902513D5A900675277 /* NewGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupsCell.swift; sourceTree = "<group>"; };
 		1D53E3922513D5BB00675277 /* NewGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupsController.swift; sourceTree = "<group>"; };
 		1D53E3942513D6B400675277 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1D5C89D52516CD7000D82B40 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1DF28A6625124A8E00CFB258 /* Social App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF28A6925124A8E00CFB258 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +45,9 @@
 		1DF28A8A2512643200CFB258 /* MyFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsCell.swift; sourceTree = "<group>"; };
 		1DF28A8D25126F1D00CFB258 /* FriendPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoController.swift; sourceTree = "<group>"; };
 		1DF28A8F25126F2D00CFB258 /* FriendPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCell.swift; sourceTree = "<group>"; };
+		1DF3E92825177B5900BC1C96 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
+		1DF3E93225177C1B00BC1C96 /* NewtworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewtworkLayer.swift; sourceTree = "<group>"; };
+		1DF3E93525177C4C00BC1C96 /* INetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INetworkLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D25B4962513DEEE00764F6C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1DF28A6F25124A8E00CFB258 /* Main.storyboard */,
+				1DF28A7425124A9000CFB258 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		1D53E38A2513D25000675277 /* MyGroups */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,17 +107,20 @@
 		1DF28A6825124A8E00CFB258 /* Social App */ = {
 			isa = PBXGroup;
 			children = (
+				1DF28A6925124A8E00CFB258 /* AppDelegate.swift */,
+				1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */,
+				1D25B4962513DEEE00764F6C /* Storyboard */,
 				1D53E38F2513D57F00675277 /* NewGroups */,
 				1D53E38A2513D25000675277 /* MyGroups */,
 				1DF28A8C25126F0200CFB258 /* FriendPhotos */,
 				1DF28A872512630800CFB258 /* MyFriends */,
-				1DF28A6925124A8E00CFB258 /* AppDelegate.swift */,
-				1DF28A6B25124A8E00CFB258 /* SceneDelegate.swift */,
-				1DF28A6F25124A8E00CFB258 /* Main.storyboard */,
 				1DF28A7225124A9000CFB258 /* Assets.xcassets */,
-				1DF28A7425124A9000CFB258 /* LaunchScreen.storyboard */,
 				1DF28A7725124A9000CFB258 /* Info.plist */,
 				1D53E3942513D6B400675277 /* Default-568h@2x.png */,
+				1D5C89D52516CD7000D82B40 /* LoginController.swift */,
+				1DF3E92825177B5900BC1C96 /* FriendModel.swift */,
+				1DF3E93225177C1B00BC1C96 /* NewtworkLayer.swift */,
+				1DF3E93525177C4C00BC1C96 /* INetworkLayer.swift */,
 			);
 			path = "Social App";
 			sourceTree = "<group>";
@@ -150,7 +170,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Смицкий А.Д.";
 				TargetAttributes = {
 					1DF28A6525124A8E00CFB258 = {
@@ -195,9 +215,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D5C89D62516CD7000D82B40 /* LoginController.swift in Sources */,
+				1DF3E92925177B5900BC1C96 /* FriendModel.swift in Sources */,
+				1DF3E93325177C1B00BC1C96 /* NewtworkLayer.swift in Sources */,
 				1DF28A9025126F2D00CFB258 /* FriendPhotoCell.swift in Sources */,
 				1D53E3912513D5A900675277 /* NewGroupsCell.swift in Sources */,
 				1D53E3932513D5BB00675277 /* NewGroupsController.swift in Sources */,
+				1DF3E93625177C4C00BC1C96 /* INetworkLayer.swift in Sources */,
 				1DF28A892512632900CFB258 /* MyFriendsController.swift in Sources */,
 				1DF28A6A25124A8E00CFB258 /* AppDelegate.swift in Sources */,
 				1D53E38E2513D27900675277 /* MyGroupsCell.swift in Sources */,
@@ -256,6 +280,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -316,6 +341,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
