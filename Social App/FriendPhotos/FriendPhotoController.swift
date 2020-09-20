@@ -14,7 +14,7 @@ final class FriendPhotoController: UICollectionViewController {
     
     // MARK: - Public properties
     
-    lazy var friendPhotoView = UIImage()
+    lazy var friendPhotoView = UIImageView()
     lazy var likeImage = UIImage(named: "pizza3")
     lazy var likeCount = UILabel()
     lazy var likeButton = UIButton()
@@ -25,6 +25,9 @@ final class FriendPhotoController: UICollectionViewController {
         super.viewDidLoad()
         addActions()
         likeCount.text = "\(0)"
+        UIView.animate(withDuration: 0.5) {
+            self.friendPhotoView.alpha = 0.5
+        }
     }
     
     @objc
@@ -58,7 +61,7 @@ extension FriendPhotoController {
         
         cell.likeCount.text = likeCount.text
         cell.likeButton.addTarget(self, action: #selector(likeTap), for: .touchUpInside)
-        cell.friendPhoto.image = friendPhotoView
+        cell.friendPhoto.image = friendPhotoView.image
         cell.likeImage.image = likeImage
         return cell
     }

@@ -8,39 +8,50 @@
 
 import UIKit
 
-class NewGroupsController: UITableViewController {
+// MARK: - NewGroupsController
 
+final class NewGroupsController: UITableViewController {
+
+    // MARK: - Private properties
+    
+    lazy var groupsList = ["Автомобили",
+                                   "Природа",
+                                   "Образование",
+                                   "Политика",
+                                   "Игры"]
+    
+    lazy var groupsImage = [UIImage(named: "pizza1"),
+                                    UIImage(named: "pizza2"),
+                                    UIImage(named: "pizza3"),
+                                    UIImage(named: "pizza4"),
+                                    UIImage(named: "star")]
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return groupsList.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "newGroupsCell", for: indexPath) as? NewGroupsCell else { return UITableViewCell() }
+        
+        cell.groupName.text = groupsList[indexPath.row]
+        cell.groupImage.image = groupsImage[indexPath.row]
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
