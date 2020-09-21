@@ -45,5 +45,4 @@ final class NetworkLayer: INetworkLayer {
             }
         } .resume()
     }
-    
 }

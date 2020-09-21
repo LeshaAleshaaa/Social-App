@@ -21,15 +21,15 @@ final class MyFriendsCell: UITableViewCell {
                 let lastname = cellData?.last_name,
                 let image = URL(string: "\(cellData?.photo_200_orig ?? Constants.emptyImage)")
             else { return }
-            friendName.text = "\(firstname) \(lastname)"
-            friendImage.parseImage(url: image)
+            friendName?.text = "\(firstname) \(lastname)"
+            friendImage?.parseImage(url: image)
         }
     }
     
     // MARK: - Outlets
     
-    @IBOutlet weak var friendName: UILabel!
-    @IBOutlet weak var friendImage: UIImageView!
+    @IBOutlet private weak var friendName: UILabel?
+    @IBOutlet private weak var friendImage: UIImageView?
     
     // MARK: - Life Cycle
     
@@ -52,9 +52,9 @@ private extension MyFriendsCell {
     }
     
     func setFriendImage() {
-        friendImage.layer.cornerRadius = Constants.imageCorner
-        friendImage.layer.shadowOffset = Constants.imageOffset
-        friendImage.layer.shadowOpacity = Constants.imageOpacity
+        friendImage?.layer.cornerRadius = Constants.imageCorner
+        friendImage?.layer.shadowOffset = Constants.imageOffset
+        friendImage?.layer.shadowOpacity = Constants.imageOpacity
     }
 }
 
