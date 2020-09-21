@@ -14,64 +14,114 @@ final class FriendPhotoController: UICollectionViewController {
     
     // MARK: - Public properties
     
-    lazy var friendPhotoView = UIImageView()
-    lazy var likeImage = UIImage(named: "pizza3")
-    lazy var likeCount = UILabel()
-    lazy var likeButton = UIButton()
+    public var basicViewURL: String?
+    public var friendID: Int?
+    
+    // MARK: - Private properties
+    
+    private lazy var likeImage = UIImageView()
+    private lazy var likeCount = UILabel()
+    private lazy var likeButton = UIButton()
+    private lazy var results = PhotosResults()
+    private lazy var friendPhotoView = UIImageView()
+    private var parsingResults: INetworkLayer?
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addActions()
-        likeCount.text = "\(0)"
-        UIView.animate(withDuration: 0.5) {
-            self.friendPhotoView.alpha = 0.5
-        }
+        setupViews()
+        loadData()
     }
+    
+    // MARK: - Private methods
+    
+    private func loadData() {
+        parsingResults = NetworkLayer()
+        parsingResults?.getFriendPhotos(
+            api: URLList.photosApi + String(friendID ?? Constants.emptyID) + URLList.token + URLList.version,
+            complition: { [weak self] item in
+                guard let self = self else { return }
+                
+                self.results = item
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            })
+    }
+    
+    // MARK: - Selectors
     
     @objc
     private func likeTap() {
-        if likeCount.text == "\(0)" {
-        likeImage = UIImage(named: "pizza2")
-        likeCount.text = "\(1)"
-        collectionView.reloadData()
+        if likeCount.text == Constants.likeCount0 {
+            likeImage.image = Constants.likedImage
+            likeCount.text = Constants.likeCount1
+            collectionView.reloadData()
         } else {
-            likeImage = UIImage(named: "pizza3")
-            likeCount.text = "\(0)"
+            likeImage.image = Constants.likeImageImage
+            likeCount.text = Constants.likeCount0
             collectionView.reloadData()
         }
+    }
 }
-}
+
 // MARK: - Setups
 
 extension FriendPhotoController {
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return results.response?.items?.count ?? Constants.emptyItems
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendPhoto", for: indexPath)
-            as? FriendPhotoCell else { return UICollectionViewCell() }
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
+    UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellName, for: indexPath)
+                as? FriendPhotoCell else { return UICollectionViewCell() }
         
-        cell.likeCount.text = likeCount.text
-        cell.likeButton.addTarget(self, action: #selector(likeTap), for: .touchUpInside)
-        cell.friendPhoto.image = friendPhotoView.image
-        cell.likeImage.image = likeImage
+        cell.likeCount?.text = likeCount.text
+        cell.likeButton?.addTarget(self, action: #selector(likeTap), for: .touchUpInside)
+        cell.cellData = results.response?.items?[indexPath.row].sizes?[Constants.sizeCount]
+        cell.likeImage?.image = likeImage.image
         return cell
     }
 }
 
-// MARK: - Setup Elements
+private extension FriendPhotoController {
+    
+    func setupViews() {
+        setLikeImage()
+        setLikeCount()
+    }
+    
+    func setLikeImage() {
+        likeImage.image = Constants.likeImageImage
+    }
+    
+    func setLikeCount() {
+        likeCount.text = Constants.likeCount0
+    }
+    
+    func setURL() {
+    }
+}
+
+// MARK: - Constants
 
 private extension FriendPhotoController {
     
-    func addActions() {
-//        likeButton.addTarget(self, action: #selector(likeTap), for: .touchUpInside)
+    enum Constants {
+        
+        static let likeImageImage = UIImage(named: "pizza2")
+        static let likedImage = UIImage(named: "pizza3")
+        
+        static let likeCount0: String = "0"
+        static let likeCount1: String = "1"
+        
+        static let emptyItems: Int = 0
+        static let cellName: String = "friendPhoto"
+        static let sizeCount: Int = 3
+        static let emptyID: Int = 0
+        
     }
 }

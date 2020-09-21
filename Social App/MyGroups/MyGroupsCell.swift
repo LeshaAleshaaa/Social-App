@@ -14,8 +14,8 @@ final class MyGroupsCell: UITableViewCell {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var myGroupName: UILabel!
-    @IBOutlet weak var myGroupImage: UIImageView!
+    @IBOutlet weak var myGroupName: UILabel?
+    @IBOutlet weak var myGroupImage: UIImageView?
     
     // MARK: - Life Cycle
     

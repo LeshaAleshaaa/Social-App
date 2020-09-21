@@ -9,5 +9,6 @@
 //MARK: - INetworkLayer
 
 protocol INetworkLayer {
-    func getJSON(api: String, complition: @escaping (Results) -> Void)
+    func getFriendsList(api: String, complition: @escaping (Results) -> Void)
+    func getFriendPhotos(api: String, complition: @escaping (PhotosResults) -> Void)
 }

@@ -12,7 +12,7 @@ import Foundation
 
 final class NetworkLayer: INetworkLayer {
     
-    func getJSON(api: String, complition: @escaping (Results) -> Void) {
+    func getFriendsList(api: String, complition: @escaping (Results) -> Void) {
         let urlString = api
         guard let url = URL(string: urlString) else { return }
         
@@ -22,6 +22,23 @@ final class NetworkLayer: INetworkLayer {
             
             do {
                 let results = try JSONDecoder().decode(Results.self, from: data)
+                complition(results)
+            } catch {
+                print("Json Error")
+            }
+        } .resume()
+    }
+    
+    func getFriendPhotos(api: String, complition: @escaping (PhotosResults) -> Void) {
+        let urlString = api
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { ( data, _, error ) in
+            guard let data = data else { return }
+            guard error == nil else { return }
+            
+            do {
+                let results = try JSONDecoder().decode(PhotosResults.self, from: data)
                 complition(results)
             } catch {
                 print("Json Error")
