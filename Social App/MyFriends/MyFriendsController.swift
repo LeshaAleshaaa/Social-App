@@ -14,15 +14,9 @@ final class MyFriendsController: UITableViewController {
     
     // MARK: - Private properties
     
-    private lazy var friendsDictionary = [String: [(String, UIImage)]]()
-    private lazy var friendSectionTitle = [String]()
-    private lazy var friendList = [(String, UIImage)]()
-    private lazy var friendsPrefix = [String]()
     private lazy var searchBar = UISearchBar()
-    private lazy var friendsSearch = [String: [(String, UIImage)]]()
-    private lazy var friendSearchTitle = [String]()
-    private lazy var searchingStatus = false
     private lazy var results = Results()
+    private lazy var imagesArray = [UIImageView]()
     private var parsingResults: INetworkLayer?
     
     // MARK: - Life Cycle
@@ -30,30 +24,59 @@ final class MyFriendsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        loadData(whichApi: "https://api.vk.com/method/friends.get?user_ids=leshaaleshaaa&fields=photo_200_orig&access_token=f0d4dc90c3ed349153d83e9a52b11cb019bd73cd42b7ff3a1a4a287b4471784bda5ddf4ca321f9955a526&v=5.124")
+        loadData()
+    }
+    
+    // MARK: - Private methods
+    
+    private func loadData() {
+        parsingResults = NetworkLayer()
+        parsingResults?.getFriendsList(api: URLList.friendList, complition: { [weak self] item in
+            guard let self = self else { return }
+            
+            self.results = item
+            DispatchQueue.main.async {
+                self.results.response?.items?.sort(
+                    by: {($0.first_name?.prefix(Constants.prefix) ?? "") <
+                        $1.first_name?.prefix(Constants.prefix) ?? ""})
+                self.tableView.reloadData()
+            }
+        })
     }
     
     // MARK: - Selectors
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == Constants.segueIdentifier {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let controller = segue.destination as! FriendPhotoController
-                controller.friendPhotoView.image = friendList[indexPath.row].1
+                let controller = segue.destination as? FriendPhotoController
+                let image = results.response?.items?[indexPath.row]
+                controller?.basicViewURL = image?.photo_200_orig
+                controller?.friendID = image?.id
             }
         }
     }
+}
+
+// MARK: - TableView DataSource
+
+extension MyFriendsController {
     
-    private func loadData(whichApi: String) {
-        parsingResults = NetworkLayer()
-        parsingResults?.getJSON(api: whichApi, complition: { [weak self] item in
-            guard let self = self else { return }
-            
-            self.results = item
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return Constants.sections
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results.response?.items?.count ?? Constants.emptyRows
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellName, for: indexPath) as?
+                MyFriendsCell else { return UITableViewCell() }
+        cell.cellData = results.response?.items?[indexPath.row]
+        
+        return cell
     }
 }
 
@@ -66,52 +89,28 @@ private extension MyFriendsController {
     }
     
     func setSearchBar() {
-        searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 70)
-        searchBar.delegate = self
+        searchBar.frame = Constants.searchBarFrame
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Поиск"
+        searchBar.placeholder = Constants.searchBarHolder
         searchBar.sizeToFit()
         tableView.tableHeaderView = searchBar
     }
 }
 
-// MARK: - TableView DataSource
+// MARK: - Constants
 
-extension MyFriendsController {
+private extension MyFriendsController {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.response?.items?.count ?? 0
-
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as? MyFriendsCell else { return UITableViewCell() }
-        cell.cellData = results.response?.items?[indexPath.row]
+    enum Constants {
         
-        return cell
-    }
-}
-
-// MARK: - SearchBar Delegate
-
-extension MyFriendsController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        friendsSearch = friendsDictionary.filter({$0.key.prefix(searchText.count) == searchText})
-        friendSearchTitle = friendSectionTitle.filter({$0.prefix(searchText.count) == searchText})
-        searchingStatus = true
-        tableView.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchingStatus = false
-        searchBar.text = ""
-        tableView.reloadData()
+        static let prefix: Int = 1
+        static let sections: Int = 1
+        static let emptyRows: Int = 0
+        static let segueIdentifier: String = "showDetail"
+        static let cellName: String = "myFriendsCell"
+        
+        static let searchBarFrame: CGRect = CGRect(x: 0, y: 0, width: 200, height: 70)
+        static let searchBarHolder: String = "Поиск"
     }
 }

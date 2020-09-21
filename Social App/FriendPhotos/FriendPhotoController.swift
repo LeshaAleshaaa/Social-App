@@ -14,10 +14,18 @@ final class FriendPhotoController: UICollectionViewController {
     
     // MARK: - Public properties
     
-    lazy var friendPhotoView = UIImageView()
-    lazy var likeImage = UIImage(named: "pizza3")
-    lazy var likeCount = UILabel()
-    lazy var likeButton = UIButton()
+    public var basicViewURL: String?
+    public var friendID: Int?
+    
+    // MARK: - Private properties
+    
+    private lazy var likeImage = UIImage(named: "pizza3")
+    private lazy var likeCount = UILabel()
+    private lazy var likeButton = UIButton()
+    private lazy var results = PhotosResults()
+    private lazy var friendPhotoView = UIImageView()
+    private var parsingResults: INetworkLayer?
+
     
     // MARK: - Life Cycle
     
@@ -25,11 +33,24 @@ final class FriendPhotoController: UICollectionViewController {
         super.viewDidLoad()
         addActions()
         likeCount.text = "\(0)"
-        UIView.animate(withDuration: 0.5) {
-            self.friendPhotoView.alpha = 0.5
-        }
+        loadData(whichApi: "https://api.vk.com/method/photos.getAll?owner_id=\(friendID!)&access_token=4e5ec4864f6f43708051171deb47a5560fcb8fbdf96282989305da13735aecffc5a4175f0e68c5a198c2f&v&v=5.124")
     }
     
+    // MARK: - Private methods
+    
+    
+    private func loadData(whichApi: String) {
+        parsingResults = NetworkLayer()
+        parsingResults?.getFriendPhotos(api: whichApi, complition: { [weak self] item in
+            guard let self = self else { return }
+            
+            self.results = item
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        })
+    }
+
     @objc
     private func likeTap() {
         if likeCount.text == "\(0)" {
@@ -42,17 +63,14 @@ final class FriendPhotoController: UICollectionViewController {
             collectionView.reloadData()
         }
 }
+    
 }
 // MARK: - Setups
 
 extension FriendPhotoController {
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return results.response?.items?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,7 +79,7 @@ extension FriendPhotoController {
         
         cell.likeCount.text = likeCount.text
         cell.likeButton.addTarget(self, action: #selector(likeTap), for: .touchUpInside)
-        cell.friendPhoto.image = friendPhotoView.image
+        cell.cellData = results.response?.items?[indexPath.row].sizes?[3]
         cell.likeImage.image = likeImage
         return cell
     }

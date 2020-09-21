@@ -12,17 +12,20 @@ import UIKit
 
 final class MyFriendsCell: UITableViewCell {
     
+    // MARK: - Public properties
+    
     public var cellData: Items? {
         didSet {
             guard
                 let firstname = cellData?.first_name,
                 let lastname = cellData?.last_name,
-                let image = URL(string: "\(cellData?.photo_200_orig ?? "")")
+                let image = URL(string: "\(cellData?.photo_200_orig ?? Constants.emptyImage)")
             else { return }
             friendName.text = "\(firstname) \(lastname)"
             friendImage.parseImage(url: image)
         }
     }
+    
     // MARK: - Outlets
     
     @IBOutlet weak var friendName: UILabel!
@@ -34,7 +37,7 @@ final class MyFriendsCell: UITableViewCell {
         super.awakeFromNib()
         setupViews()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -49,8 +52,21 @@ private extension MyFriendsCell {
     }
     
     func setFriendImage() {
-        friendImage.layer.cornerRadius = 20
-        friendImage.layer.shadowOffset = CGSize(width: 5, height: 5)
-        friendImage.layer.shadowOpacity = 1
+        friendImage.layer.cornerRadius = Constants.imageCorner
+        friendImage.layer.shadowOffset = Constants.imageOffset
+        friendImage.layer.shadowOpacity = Constants.imageOpacity
+    }
+}
+
+// MARK: - Constants
+
+private extension MyFriendsCell {
+    
+    enum Constants {
+        
+        static let emptyImage: String = ""
+        static let imageCorner: CGFloat = 20
+        static let imageOffset: CGSize = CGSize(width: 5, height: 5)
+        static let imageOpacity: Float = 1
     }
 }

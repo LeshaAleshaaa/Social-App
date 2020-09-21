@@ -9,6 +9,15 @@
 import UIKit
 
 class FriendPhotoCell: UICollectionViewCell {
+
+    public var cellData: Photos? {
+        didSet {
+            guard
+                let images = cellData?.url
+            else { return }
+            friendPhoto.parseImage(url: URL(string: images)!)
+        }
+    }
     
     @IBOutlet weak var friendPhoto: UIImageView!
     @IBOutlet weak var likeCount: UILabel!
