@@ -8,10 +8,26 @@
 
 import UIKit
 
-class FriendPhotoCell: UICollectionViewCell {
+// MARK: - FriendPhotoCell
+
+final class FriendPhotoCell: UICollectionViewCell {
     
-    @IBOutlet weak var friendPhoto: UIImageView!
-    @IBOutlet weak var likeCount: UILabel!
-    @IBOutlet weak var likeImage: UIImageView!
-    @IBOutlet weak var likeButton: UIButton!
+    // MARK: - Public properties
+    
+    public var cellData: Photos? {
+        didSet {
+            guard
+                let images = cellData?.url,
+                let url = URL(string: images)
+            else { return }
+            friendPhoto?.parseImage(url: url)
+        }
+    }
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var friendPhoto: UIImageView?
+    @IBOutlet weak var likeCount: UILabel?
+    @IBOutlet weak var likeImage: UIImageView?
+    @IBOutlet weak var likeButton: UIButton?
 }
