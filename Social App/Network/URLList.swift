@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: -URLList
+// MARK: - URLList
 
 enum URLList {
     
@@ -18,8 +18,12 @@ enum URLList {
         String = "https://api.vk.com/method/photos.getAll?owner_id="
     static let version:
         String = "&v=5.124"
-    static let token:
-        String = "&access_token=4e5ec4864f6f43708051171deb47a5560fcb8fbdf96282989305da13735aecffc5a4175f0e68c5a198c2f"
+    static let accessText:
+        String = "&access_token="
+    static var token:
+        String = ""
     static let friendList:
-        String = "\(api)friends.get?user_ids=leshaaleshaaa&fields=photo_200_orig\(token)&v=5.124"
+        String = "\(api)friends.get?fields=photo_200_orig\(accessText)\(token)\(version)"
+    static let groupsApi:
+        String = "\(api)groups.get?extended=1\(accessText)\(token)\(version)"
 }

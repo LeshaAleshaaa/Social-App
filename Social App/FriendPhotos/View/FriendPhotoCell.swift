@@ -21,13 +21,14 @@ final class FriendPhotoCell: UICollectionViewCell {
                 let url = URL(string: images)
             else { return }
             friendPhoto?.parseImage(url: url)
+            friendPhoto?.contentMode = .scaleAspectFill
+            friendPhoto?.backgroundColor = .systemGray5
+            backgroundColor = .systemGray4
         }
     }
     
     // MARK: - Outlets
     
     @IBOutlet weak var friendPhoto: UIImageView?
-    @IBOutlet weak var likeCount: UILabel?
-    @IBOutlet weak var likeImage: UIImageView?
-    @IBOutlet weak var likeButton: UIButton?
 }
+

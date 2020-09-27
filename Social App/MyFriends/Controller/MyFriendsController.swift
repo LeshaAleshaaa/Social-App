@@ -16,7 +16,9 @@ final class MyFriendsController: UITableViewController {
     
     private lazy var searchBar = UISearchBar()
     private lazy var results = Results()
+    private lazy var info = Info()
     private lazy var imagesArray = [UIImageView]()
+    private lazy var namesArray = [String]()
     private var parsingResults: INetworkLayer?
     
     // MARK: - Life Cycle
@@ -26,7 +28,7 @@ final class MyFriendsController: UITableViewController {
         setupViews()
         loadData()
     }
-    
+
     // MARK: - Private methods
     
     private func loadData() {
@@ -36,9 +38,19 @@ final class MyFriendsController: UITableViewController {
             
             self.results = item
             DispatchQueue.main.async {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    let neededData = self.results.response?.items?[indexPath.row]
+                    self.namesArray.append(neededData?.first_name ?? "")
+                    print(self.namesArray)
+                }
                 self.results.response?.items?.sort(
                     by: {($0.first_name?.prefix(Constants.prefix) ?? "") <
                         $1.first_name?.prefix(Constants.prefix) ?? ""})
+                
+//                let groupedDictionary = Dictionary(grouping: (self.results.response?.items)!,
+//                                                   by: {String($0.first_name!.prefix(1))})
+                // get the keys and sort them
+//                let keys = groupedDictionary.keys.sorted()
                 self.tableView.reloadData()
             }
         })
@@ -53,6 +65,7 @@ final class MyFriendsController: UITableViewController {
                 let image = results.response?.items?[indexPath.row]
                 controller?.basicViewURL = image?.photo_200_orig
                 controller?.friendID = image?.id
+                controller?.title = (image?.first_name ?? "") + " " + (image?.last_name ?? "")
             }
         }
     }
@@ -62,13 +75,12 @@ final class MyFriendsController: UITableViewController {
 
 extension MyFriendsController {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return Constants.sections
-    }
-    
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return results.response?.items?.count ?? 0
+//    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.response?.items?.count ?? Constants.emptyRows
         
+        return results.response?.items?.count ?? Constants.emptyRows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,6 +90,7 @@ extension MyFriendsController {
         
         return cell
     }
+    
 }
 
 // MARK: - Setups

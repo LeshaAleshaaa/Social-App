@@ -11,4 +11,5 @@
 protocol INetworkLayer {
     func getFriendsList(api: String, complition: @escaping (Results) -> Void)
     func getFriendPhotos(api: String, complition: @escaping (PhotosResults) -> Void)
+    func getMyGroups(api: String, complition: @escaping (MyGroupsResults) -> Void)
 }

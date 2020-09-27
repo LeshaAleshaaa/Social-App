@@ -45,4 +45,22 @@ final class NetworkLayer: INetworkLayer {
             }
         } .resume()
     }
+    
+    func getMyGroups(api: String, complition: @escaping (MyGroupsResults) -> Void) {
+        let urlString = api
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { ( data, _, error ) in
+            guard let data = data else { return }
+            guard error == nil else { return }
+            
+            do {
+                let results = try JSONDecoder().decode(MyGroupsResults.self, from: data)
+                complition(results)
+            } catch {
+                print("Json Error")
+            }
+        } .resume()
+    }
+
 }

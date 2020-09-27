@@ -39,7 +39,8 @@ final class FriendPhotoController: UICollectionViewController {
     private func loadData() {
         parsingResults = NetworkLayer()
         parsingResults?.getFriendPhotos(
-            api: URLList.photosApi + String(friendID ?? Constants.emptyID) + URLList.token + URLList.version,
+            api: URLList.photosApi + String(friendID ?? Constants.emptyID) +
+                URLList.accessText + URLList.token + URLList.version,
             complition: { [weak self] item in
                 guard let self = self else { return }
                 
@@ -64,6 +65,17 @@ final class FriendPhotoController: UICollectionViewController {
             collectionView.reloadData()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPhoto" {
+            if let cell = sender as? UICollectionViewCell,
+               let indexPath = self.collectionView.indexPath(for: cell) {
+                let vc = segue.destination as? PhotoDetailController
+                let items = results.response?.items?[indexPath.row]
+                vc?.imageURL = (items?.sizes?[3].url)!
+            }
+        }
+    }
 }
 
 // MARK: - Setups
@@ -79,10 +91,8 @@ extension FriendPhotoController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellName, for: indexPath)
                 as? FriendPhotoCell else { return UICollectionViewCell() }
         
-        cell.likeCount?.text = likeCount.text
-        cell.likeButton?.addTarget(self, action: #selector(likeTap), for: .touchUpInside)
         cell.cellData = results.response?.items?[indexPath.row].sizes?[Constants.sizeCount]
-        cell.likeImage?.image = likeImage.image
+        cell.layer.cornerRadius = 5
         return cell
     }
 }
@@ -92,7 +102,9 @@ private extension FriendPhotoController {
     func setupViews() {
         setLikeImage()
         setLikeCount()
-    }
+        setCollectionView()
+        collectionView.backgroundColor = .black
+   }
     
     func setLikeImage() {
         likeImage.image = Constants.likeImageImage
@@ -102,7 +114,15 @@ private extension FriendPhotoController {
         likeCount.text = Constants.likeCount0
     }
     
-    func setURL() {
+    func setCollectionView() {
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .vertical
+            layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+            layout.itemSize = CGSize(width: view.bounds.width/3, height: view.bounds.height/5)
+
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+        }
     }
 }
 
@@ -122,6 +142,5 @@ private extension FriendPhotoController {
         static let cellName: String = "friendPhoto"
         static let sizeCount: Int = 3
         static let emptyID: Int = 0
-        
     }
 }
