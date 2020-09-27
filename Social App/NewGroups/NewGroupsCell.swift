@@ -13,8 +13,9 @@ import UIKit
 final class NewGroupsCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak var groupName: UILabel!
-    @IBOutlet weak var groupImage: UIImageView!
+    
+    @IBOutlet weak var groupName: UILabel?
+    @IBOutlet weak var groupImage: UIImageView?
     
     // MARK: - Life Cycle
     

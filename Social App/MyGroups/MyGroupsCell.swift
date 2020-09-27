@@ -12,16 +12,29 @@ import UIKit
 
 final class MyGroupsCell: UITableViewCell {
     
+    // MARK: - Public properties
+    
+    public var cellData: GroupDetail? {
+        didSet {
+            guard
+                let groupImage = URL(string: cellData?.photo_200 ?? ""),
+                let groupName = cellData?.name
+            else { return }
+            myGroupName?.text = groupName
+            myGroupImage?.parseImage(url: groupImage)
+        }
+    }
+    
     // MARK: - Outlets
     
-    @IBOutlet weak var myGroupName: UILabel!
-    @IBOutlet weak var myGroupImage: UIImageView!
+    @IBOutlet weak var myGroupName: UILabel?
+    @IBOutlet weak var myGroupImage: UIImageView?
     
     // MARK: - Life Cycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupViews()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,4 +43,23 @@ final class MyGroupsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+// MARK: - Setups
+
+private extension MyGroupsCell {
+    
+    func setupViews() {
+        setGroupImage()
+        setGroupName()
+    }
+    
+    func setGroupImage() {
+        myGroupImage?.contentMode = .scaleAspectFit
+        myGroupImage?.layer.cornerRadius = 20
+    }
+    
+    func setGroupName() {
+        myGroupName?.textAlignment = .left
+    }
 }
